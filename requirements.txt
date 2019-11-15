@@ -1,0 +1,10 @@
+flask
+json
+pandas
+numpy
+flask_csv
+requests
+re
+wand
+pillow
+opencv-python
