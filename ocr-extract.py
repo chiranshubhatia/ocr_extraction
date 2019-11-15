@@ -20,7 +20,7 @@ import pandas as pd
 UPLOAD_FOLDER='/home/chiranshub/Downloads/HCDF_form'
 app=Flask(__name__)
 
-@app.route('/text_extraction',methods=['POST','GET'])
+@app.route('/',methods=['POST','GET'])
 def extract_text():
     if request.method=='POST':
         print(request.files['file'])
