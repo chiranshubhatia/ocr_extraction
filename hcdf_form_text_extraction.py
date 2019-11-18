@@ -384,13 +384,14 @@ def text_cleaning(text_new):
     return text_new
 
 if __name__=="__main__":
-    filename="HCFA 1500 form.pdf"
-    pdf_to_png(filename)
+#     filename="HCFA 1500 form.pdf"
+#     pdf_to_png(filename)
     # object for textual data from image
+    data=requests.get('https://imagecleaningpreprocesso.blob.core.windows.net/sendtoaiapiblob/9053507b-f038-4d4f-bbf1-75c6354a4018')
     texual_data=ocr_extraction()
-    image_path="HCFA_1500_1.png"
-    image_data=open(image_path,"rb").read()
-    text=texual_data.text_extract(image_data)
+#     image_path="HCFA_1500_1.png"
+#     image_data=open(image_path,"rb").read()
+    text=texual_data.text_extract(data)
 #    text_new=" ".join(text)
 #    
 #    text_new=re.split('[0-9]{1,2}\.| [a-z]{1}\.',text_new)
