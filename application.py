@@ -23,20 +23,20 @@ app=Flask(__name__)
 
 @app.route('/',methods=['POST','GET'])
 def extract_text():
-    if request.method=='POST':
+#     if request.method=='POST':
     
-        image_data=requests.get('https://imagecleaningpreprocesso.blob.core.windows.net/sendtoaiapiblob/9053507b-f038-4d4f-bbf1-75c6354a4018')
-        if image_data.status_code==200:
-            texual_data=hcdf_form_text_extraction.ocr_extraction()
-            text=texual_data.text_extract(image_data)
-            text_new=hcdf_form_text_extraction.text_cleaning(text)
-            entity_mapping=hcdf_form_text_extraction.entity_extraction()
-            print("before extraction",entity_mapping.info)
-            entity_mapping.get_entites(text_new)
-            print("after extraction",entity_mapping.info)
-            return pd.DataFrame.from_dict(entity_mapping.info,orient='index').to_html()
-        else:
-            return redirect(url_for('error_page'))
+#         image_data=requests.get('https://imagecleaningpreprocesso.blob.core.windows.net/sendtoaiapiblob/9053507b-f038-4d4f-bbf1-75c6354a4018')
+#         if image_data.status_code==200:
+#             texual_data=hcdf_form_text_extraction.ocr_extraction()
+#             text=texual_data.text_extract(image_data)
+#             text_new=hcdf_form_text_extraction.text_cleaning(text)
+#             entity_mapping=hcdf_form_text_extraction.entity_extraction()
+#             print("before extraction",entity_mapping.info)
+#             entity_mapping.get_entites(text_new)
+#             print("after extraction",entity_mapping.info)
+#             return pd.DataFrame.from_dict(entity_mapping.info,orient='index').to_html()
+#         else:
+#             return redirect(url_for('error_page'))
     return '''
 <html><head><title>Upload new File</title>
     </head><body><h1>OCR extraction for HDCF form 1500</h1>
@@ -91,4 +91,4 @@ def error_page():
 <h2> File name should be in PDF format </h2><br>
 </body>
   </html>'''
-app.run(host='0.0.0.0') 
+app.run() 
