@@ -5,11 +5,11 @@ Created on Tue Nov 12 14:10:42 2019
 
 @author: chiranshub
 """
-from azure.cognitiveservices.vision.computervision import ComputerVisionClient
-from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
-from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
-from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
-from msrest.authentication import CognitiveServicesCredentials
+# from azure.cognitiveservices.vision.computervision import ComputerVisionClient
+# from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+# from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
+# from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
+# from msrest.authentication import CognitiveServicesCredentials
 import json
 import os
 import sys
@@ -18,7 +18,7 @@ import requests
 from azure.cognitiveservices.language.textanalytics import TextAnalyticsClient
 from msrest.authentication import CognitiveServicesCredentials
 import re
-from pdf_to_png import pdf_to_png
+# from pdf_to_png import pdf_to_png
 
 # variables for entity extraction from text
 key_var_name = '2f77f291c6e8467c8c694bd80a445f9a'
