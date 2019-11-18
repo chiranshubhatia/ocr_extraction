@@ -16,6 +16,7 @@ import flask
 import hcdf_form_text_extraction
 import json
 import pandas as pd
+import requests
 #os.chdir('/home/chiranshub/Downloads/HCDF_form')
 #UPLOAD_FOLDER='/home/chiranshub/Downloads/HCDF_form'
 app=Flask(__name__)
