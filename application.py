@@ -12,7 +12,7 @@ from datetime import date
 from flask_csv import send_csv
 from werkzeug.utils import secure_filename
 import flask
-from pdf_to_png import pdf_to_png
+# from pdf_to_png import pdf_to_png
 import hcdf_form_text_extraction
 import json
 import pandas as pd
