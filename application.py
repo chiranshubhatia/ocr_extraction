@@ -91,4 +91,4 @@ def error_page():
 <h2> File name should be in PDF format </h2><br>
 </body>
   </html>'''
-app.run(host='0.0.0.0',port=8000) 
+app.run() 
