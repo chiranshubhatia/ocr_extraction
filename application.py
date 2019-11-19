@@ -8,8 +8,8 @@ import pandas as pd
 import requests
 app=Flask(__name__)
 
-@app.route('/',methods=['POST','GET'])
+@app.route('/')
 def extract_text():
   print(" hello world")
   return "welcome to the page"
-app.run(host='0.0.0.0', port= 8000)
+app.run()
