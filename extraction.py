@@ -6,7 +6,7 @@ Created on Wed Nov 13 11:06:10 2019
 @author: chiranshub
 """
 
-import os
+# import os
 from flask import Flask,request,redirect,url_for,send_from_directory
 from datetime import date
 # from flask_csv import send_csv
@@ -19,9 +19,9 @@ import pandas as pd
 import requests
 #os.chdir('/home/chiranshub/Downloads/HCDF_form')
 #UPLOAD_FOLDER='/home/chiranshub/Downloads/HCDF_form'
-app=Flask(__name__)
+myapp=Flask(__name__)
 
-@app.route('/',methods=['POST','GET'])
+@myapp.route('/',methods=['POST','GET'])
 def extract_text():
     if request.method=='POST':
     
@@ -83,7 +83,7 @@ def extract_text():
 #          </form></h2><div style="background-color: rgb(255, 143, 0); display: none; color: white; text-align: center; position: fixed; top: 0px; left: 0px; width: 100%; height: auto; min-width: 100%; min-height: auto; max-width: 100%; font: 12px &quot;Helvetica Neue&quot;, Helvetica, Arial, Geneva, sans-serif; cursor: pointer; padding: 5px;"><span style="color: white; font: 12px &quot;Helvetica Neue&quot;, Helvetica, Arial, Geneva, sans-serif;">You have turned off the paragraph player. You can turn it on again from the options page.</span><img src="chrome-extension://gfjopfpjmkcfgjpogepmdjmcnihfpokn/img/icons/icon-close_16.png" style="width: 20px; height: auto; min-width: 20px; min-height: auto; max-width: 20px; float: right; margin-right: 10px;"></div></body></html>
 # '''
 
-@app.route('/file_error')        
+@myapp.route('/file_error')        
 def error_page():
     return ''' <html><head><title> Invalid Parameters </title></head>
 <body>
@@ -91,4 +91,4 @@ def error_page():
 <h2> File name should be in PDF format </h2><br>
 </body>
   </html>'''
-app.run() 
+myapp.run() 
