@@ -12,3 +12,4 @@ app=Flask(__name__)
 def extract_text():
   print(" hello world")
   return "welcome to the page"
+app.run(host='0.0.0.0', port= 8000)
