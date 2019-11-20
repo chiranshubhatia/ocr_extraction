@@ -24,9 +24,10 @@ app=Flask(__name__)
 @app.route('/extract',methods=['POST','GET'])
 def extract_text():
     if request.method=='POST':
-        data=request.form['RUN']
-        messID=request.form['messageID']
-        image_data=requests.get('https://imagecleaningpreprocesso.blob.core.windows.net/sendtoaiapiblob/9053507b-f038-4d4f-bbf1-75c6354a4018')
+        data=request.get_json()
+        image_data_url=data['image_url']
+        messID=data['messageID']
+        image_data=requests.get(image_data_url)
         if image_data.status_code==200:
             texual_data=hcdf_form_text_extraction.ocr_extraction()
             text=texual_data.text_extract(image_data)
