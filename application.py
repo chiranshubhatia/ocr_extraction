@@ -40,8 +40,8 @@ def extract_text():
             send_data={"Response":entity_mapping.info,"MessageId":mess}
             headers = {'Content-Type': 'application/json'}
             x=requests.post(url,data=json.dumps(send_data),headers=headers)
-            print(x.status_code)
-            return "check the result"
+            print("check the status code for response",x.status_code)
+            return pd.DataFrame.from_dict(entity_mapping.info,orient='index').to_html()
         else:
             return redirect(url_for('error_page'))
     return '''
