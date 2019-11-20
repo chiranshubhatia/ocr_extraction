@@ -38,7 +38,7 @@ def extract_text():
             print("after extraction",entity_mapping.info)
             url='https://msairesponsereciever20191104013958.azurewebsites.net/api/AIResponse/GetPostedImages'
             
-            send_data={"Response":json.dumps(entity_mapping.info),"MessageId":mess}
+            send_data={"Response":json.dumps(entity_mapping.info),"MessageId":messID}
             headers = {'Content-Type': 'application/json'}
             x=requests.post(url,data=json.dumps(send_data),headers=headers)
             print("check the status code for response",x.status_code)
