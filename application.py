@@ -40,7 +40,8 @@ def extract_text():
             send_data={"Response":entity_mapping.info,"MessageId":mess}
             headers = {'Content-Type': 'application/json'}
             x=requests.post(url,data=json.dumps(send_data),headers=headers)
-            return x.status_code
+            print(x.status_code)
+            return "check the result"
         else:
             return redirect(url_for('error_page'))
     return '''
