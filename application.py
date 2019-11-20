@@ -36,7 +36,11 @@ def extract_text():
             print("before extraction",entity_mapping.info)
             entity_mapping.get_entites(text_new)
             print("after extraction",entity_mapping.info)
-            return pd.DataFrame.from_dict(entity_mapping.info,orient='index').to_html()
+            url='https://msairesponsereciever20191104013958.azurewebsites.net/api/AIResponse/GetPostedImages'
+            send_data={"Response":entity_mapping.info,"MessageId":mess}
+            headers = {'Content-Type': 'application/json'}
+            x=requests.post(url,data=json.dumps(send_data),headers=headers)
+            return x.status_code
         else:
             return redirect(url_for('error_page'))
     return '''
@@ -90,8 +94,7 @@ def extract_text():
 def error_page():
     return ''' <html><head><title> Invalid Parameters </title></head>
 <body>
-<h1> Invalid filename</h1><br>
-<h2> File name should be in PDF format </h2><br>
+<h1> Error Occured</h1><br>
 </body>
   </html>'''
 
