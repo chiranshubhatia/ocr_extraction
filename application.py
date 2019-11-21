@@ -17,6 +17,9 @@ import hcdf_form_text_extraction
 import json
 import pandas as pd
 import requests
+import uuid
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+from azure.servicebus import QueueClient, Message
 #os.chdir('/home/chiranshub/Downloads/HCDF_form')
 #UPLOAD_FOLDER='/home/chiranshub/Downloads/HCDF_form'
 app=Flask(__name__)
@@ -36,12 +39,21 @@ def extract_text():
             print("before extraction",entity_mapping.info)
             entity_mapping.get_entites(text_new)
             print("after extraction",entity_mapping.info)
-            url='https://msairesponsereciever20191104013958.azurewebsites.net/api/AIResponse/GetPostedImages'
+            gui_id=uuid.uuid1()
+            blob_service_client = BlobServiceClient.from_connection_string("DefaultEndpointsProtocol=https;AccountName=imagecleaningpreprocesso;AccountKey=5nHc9CX548BdVn4qlJjRtEg16Tk3kk24k2V0hpzEuhdRJK5MNPFoA/MCI6GEAiDb6CW0OnJqWM+hVhwna9euDA==;EndpointSuffix=core.windows.net")
+            blob_client = blob_service_client.get_blob_client(container="airesponserecieverblob", blob=str(gui_id))
+            blob_client.upload_blob(json.dumps(entity_mapping.info))
+            queue_client = QueueClient.from_connection_string("Endpoint=sb://hwservicebusqueue.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=BG3vfgT/3w0DL3Wa8FFLXZ6Nh5Mgrh65aRmuXigcuJc=", "airesonsequeue")
+            msg = Message(b'This is Test Message')
+            Message.MessageId=str(gui_id)
+            queue_client.send(msg)
+
+#             url='https://msairesponsereciever20191104013958.azurewebsites.net/api/AIResponse/GetPostedImages'
             
-            send_data={"Response":json.dumps(entity_mapping.info),"MessageId":messID}
-            headers = {'Content-Type': 'application/json'}
-            x=requests.post(url,data=json.dumps(send_data),headers=headers)
-            print("check the status code for response",x.status_code)
+#             send_data={"Response":json.dumps(entity_mapping.info),"MessageId":messID}
+#             headers = {'Content-Type': 'application/json'}
+#             x=requests.post(url,data=json.dumps(send_data),headers=headers)
+#             print("check the status code for response",x.status_code)
             return "success"
 #             return pd.DataFrame.from_dict(entity_mapping.info,orient='index').to_html()
         else:
