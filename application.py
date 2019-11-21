@@ -44,8 +44,10 @@ def extract_text():
             blob_client = blob_service_client.get_blob_client(container="airesponserecieverblob", blob=str(gui_id))
             blob_client.upload_blob(json.dumps(entity_mapping.info))
             queue_client = QueueClient.from_connection_string("Endpoint=sb://hwservicebusqueue.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=BG3vfgT/3w0DL3Wa8FFLXZ6Nh5Mgrh65aRmuXigcuJc=", "airesonsequeue")
-            msg = Message(b'This is Test Message')
-            Message.MessageId=str(gui_id)
+            mess_body="sample Text message"+":"+str(gui_id)
+            msg = Message(mess_body)
+            print(msg.message)
+#             Message.MessageId=str(gui_id)
             queue_client.send(msg)
 
 #             url='https://msairesponsereciever20191104013958.azurewebsites.net/api/AIResponse/GetPostedImages'
