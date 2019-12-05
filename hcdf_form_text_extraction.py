@@ -21,8 +21,8 @@ import re
 # from pdf_to_png import pdf_to_png
 
 # variables for entity extraction from text
-key_var_name = '2f77f291c6e8467c8c694bd80a445f9a'
-endpoint_var_name = 'https://hcdf-form-text.cognitiveservices.azure.com/'
+key_var_name = '6bdd881462d54d91ae529805aa41b2f7'#'2f77f291c6e8467c8c694bd80a445f9a'
+endpoint_var_name = 'https://hcdf-text.cognitiveservices.azure.com/'#'https://hcdf-form-text.cognitiveservices.azure.com/'
 credentials = CognitiveServicesCredentials(key_var_name)
 text_analytics = TextAnalyticsClient(endpoint=endpoint_var_name, credentials=credentials)
 def find_pattern(text, patterns):
@@ -44,8 +44,8 @@ def extract_entities(t):
 
 class ocr_extraction:
     def __init__(self):
-        self.subscription_key='d7d1fec58933440fa89fcfd8f9b58a06'
-        self.endpoint='https://hcdf-form.cognitiveservices.azure.com/'
+        self.subscription_key='3e19496d743742c8852df11550dd0428'#'d7d1fec58933440fa89fcfd8f9b58a06'
+        self.endpoint='https://hcdf-ocr.cognitiveservices.azure.com/'#'https://hcdf-form.cognitiveservices.azure.com/'
         self.ocr_url = self.endpoint + "vision/v2.1/ocr"
         self.params = {'language': 'en', 'detectOrientation': 'true'}
         self.text=[]
